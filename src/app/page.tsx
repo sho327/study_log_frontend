@@ -28,7 +28,7 @@ import {
   IconRocket,
 } from '@tabler/icons-react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/components/providers';
+import { useAuth } from '@/components/providers/mantineProvider';
 import { useEffect } from 'react';
 
 const features = [
@@ -94,7 +94,7 @@ export default function LandingPage() {
         <Container size="lg">
           <Group justify="space-between">
             <Text size="xl" fw={700}>
-              Knolty
+              StudyLog
             </Text>
             <Group gap="sm">
               <ActionIcon
@@ -118,8 +118,7 @@ export default function LandingPage() {
         <Stack gap={60} align="center">
           <Stack gap="lg" align="center" ta="center" maw={700}>
             <Badge size="lg" variant="light" leftSection={<IconRocket size={14} />}>
-              {/* MVP + v2 機能を実装済み */}
-              バージョン: 1.0.0
+              MVP + v2 機能を実装済み
             </Badge>
             <Title order={1} size={48} fw={800} style={{ lineHeight: 1.1 }}>
               学習を記録。
@@ -136,7 +135,7 @@ export default function LandingPage() {
               </Text>
             </Title>
             <Text size="xl" c="dimmed" maw={600}>
-              Knoltyは開発者と学習者のための、アウトプット重視の学習プラットフォームです。
+              StudyLogは開発者と学習者のための、アウトプット重視の学習プラットフォームです。
               学習時間を記録し、成果物を紐づけ、コミュニティとつながりましょう。
             </Text>
             <Group mt="md">
@@ -181,7 +180,7 @@ export default function LandingPage() {
           <Stack gap="md" align="center" ta="center" py={40}>
             <Title order={2}>学習の旅を始めませんか?</Title>
             <Text c="dimmed" maw={500}>
-              Knoltyで進捗を記録し、成果物を共有している
+              StudyLogで進捗を記録し、成果物を共有している
               多くの開発者や学習者に加わりましょう。
             </Text>
             <Button size="lg" onClick={() => router.push('/register')}>
@@ -195,7 +194,7 @@ export default function LandingPage() {
         <Container size="lg">
           <Group justify="space-between">
             <Text size="sm" c="dimmed">
-              2024 Knolty. 学習者のために、学習者が作りました。
+              2024 StudyLog. 学習者のために、学習者が作りました。
             </Text>
             <Group gap="xs">
               <Button variant="subtle" size="sm" onClick={() => router.push('/api-docs')}>

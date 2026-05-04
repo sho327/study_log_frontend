@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
-import { Providers } from '@/components/providers';
+import { MantineProviderWrapper } from '@/components/providers/mantineProvider';
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
 import '@mantine/charts/styles.css';
 import '@mantine/notifications/styles.css';
-import '@/styles/globals.css';
+import './globals.css';
 
 const geistSans = Geist({
   subsets: ['latin'],
@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Knolty - Output Learning Platform',
+  title: 'StudyLog - Output Learning Platform',
   description: 'Track your learning journey, share outputs, and grow with a community of learners and developers.',
   generator: 'v0.app',
   icons: {
@@ -56,7 +56,7 @@ export default function RootLayout({
     <html lang="ja" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <head />
       <body className="font-sans antialiased" suppressHydrationWarning>
-        <Providers>{children}</Providers>
+        <MantineProviderWrapper>{children}</MantineProviderWrapper>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

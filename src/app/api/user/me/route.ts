@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-export const dynamic = "force-static";
 
 // Note: In a real app, this would authenticate the user via token/session
 // and return their profile from the database.
@@ -10,16 +9,16 @@ export async function GET(request: NextRequest) {
     // 1. Extract the auth token from headers
     // 2. Verify the token
     // 3. Fetch user data from the database
-
+    
     const authHeader = request.headers.get('Authorization');
-
+    
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return NextResponse.json(
         { error: 'Authorization header with Bearer token is required' },
         { status: 401 }
       );
     }
-
+    
     // Sample response structure
     const sampleResponse = {
       success: true,
@@ -35,7 +34,7 @@ export async function GET(request: NextRequest) {
       },
       message: 'In demo mode, authentication is client-side. Connect a database for real authentication.',
     };
-
+    
     return NextResponse.json(sampleResponse);
   } catch (error) {
     console.error('Error fetching user:', error);

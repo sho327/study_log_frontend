@@ -1,3 +1,29 @@
+// import { createTheme, type MantineThemeOverride } from '@mantine/core';
+
+// export const theme: MantineThemeOverride = createTheme({
+//   primaryColor: 'blue',
+//   fontFamily: 'var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+//   fontFamilyMonospace: 'var(--font-mono), "Fira Code", "Fira Mono", Consolas, monospace',
+//   headings: {
+//     fontFamily: 'var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+//   },
+//   defaultRadius: 'md',
+//   colors: {
+//     dark: [
+//       '#C1C2C5',
+//       '#A6A7AB',
+//       '#909296',
+//       '#5C5F66',
+//       '#373A40',
+//       '#2C2E33',
+//       '#25262B',
+//       '#1A1B1E',
+//       '#141517',
+//       '#101113',
+//     ],
+//   },
+// });
+
 'use client';
 
 import { createTheme, MantineColorsTuple } from '@mantine/core';
