@@ -219,11 +219,7 @@ export default function NewLogPage() {
                   required
                   data={defaultCategories}
                   searchable
-                  creatable
-                  getCreateLabel={(query) => `+ Create "${query}"`}
-                  onCreate={(query) => {
-                    return query;
-                  }}
+                  nothingFoundMessage="No category found"
                   leftSection={<IconCategory size={16} />}
                   {...form.getInputProps('category')}
                 />
