@@ -118,7 +118,8 @@ export default function LandingPage() {
         <Stack gap={60} align="center">
           <Stack gap="lg" align="center" ta="center" maw={700}>
             <Badge size="lg" variant="light" leftSection={<IconRocket size={14} />}>
-              MVP + v2 機能を実装済み
+              {/* MVP + v2 機能を実装済み */}
+              バージョン: 1.0.0
             </Badge>
             <Title order={1} size={48} fw={800} style={{ lineHeight: 1.1 }}>
               学習を記録。
