@@ -1,100 +1,127 @@
-"use client";
+import * as React from 'react'
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  MoreHorizontalIcon,
+} from 'lucide-react'
 
-import { useMemo } from 'react';
-import { Button } from './button';
+import { cn } from '@/lib/utils'
+import { Button, buttonVariants } from '@/components/ui/button'
 
-interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
-  variant?: 'circular' | 'joined';
+function Pagination({ className, ...props }: React.ComponentProps<'nav'>) {
+  return (
+    <nav
+      role="navigation"
+      aria-label="pagination"
+      data-slot="pagination"
+      className={cn('mx-auto flex w-full justify-center', className)}
+      {...props}
+    />
+  )
 }
 
-export function Pagination({
-  currentPage,
-  totalPages,
-  onPageChange,
-  variant = 'joined',
-}: PaginationProps) {
-
-  const visiblePages = useMemo(() => {
-    const total = totalPages;
-    const current = currentPage;
-    const maxVisible = 5;
-
-    if (total <= maxVisible) {
-      return Array.from({ length: total }, (_, i) => i + 1);
-    }
-
-    let start = Math.max(1, current - Math.floor(maxVisible / 2));
-    let end = Math.min(total, start + maxVisible - 1);
-
-    if (end === total) {
-      start = Math.max(1, total - maxVisible + 1);
-    } else if (start === 1) {
-      end = Math.min(total, maxVisible);
-    }
-
-    const pages = [];
-    for (let i = start; i <= end; i++) {
-      pages.push(i);
-    }
-    return pages;
-  }, [totalPages, currentPage]);
-
-  const isCircular = variant === 'circular';
-
+function PaginationContent({
+  className,
+  ...props
+}: React.ComponentProps<'ul'>) {
   return (
-    <div className={isCircular ? "flex items-center space-x-2" : "join"}>
-      <Button
-        className={isCircular ? "btn-sm btn-circle" : "join-item btn-sm"}
-        variant={isCircular ? "ghost" : "outline"}
-        title="最初へ"
-        disabled={currentPage === 1}
-        onClick={() => onPageChange(1)}
-      >
-        <i className="fas fa-angle-double-left"></i>
-      </Button>
-      <Button
-        className={isCircular ? "btn-sm btn-circle" : "join-item btn-sm"}
-        variant={isCircular ? "ghost" : "outline"}
-        title="前へ"
-        disabled={currentPage === 1}
-        onClick={() => onPageChange(currentPage - 1)}
-      >
-        <i className="fas fa-angle-left"></i>
-      </Button>
+    <ul
+      data-slot="pagination-content"
+      className={cn('flex flex-row items-center gap-1', className)}
+      {...props}
+    />
+  )
+}
 
-      {visiblePages.map(page => (
-        <Button
-          key={page}
-          className={isCircular ? "btn-sm btn-circle" : "join-item btn-sm"}
-          variant={currentPage === page ? "primary" : (isCircular ? "ghost" : "outline")}
-          onClick={() => onPageChange(page)}
-          disabled={totalPages === 0}
-        >
-          <span>{page}</span>
-        </Button>
-      ))}
+function PaginationItem({ ...props }: React.ComponentProps<'li'>) {
+  return <li data-slot="pagination-item" {...props} />
+}
 
-      <Button
-        className={isCircular ? "btn-sm btn-circle" : "join-item btn-sm"}
-        variant={isCircular ? "ghost" : "outline"}
-        title="次へ"
-        disabled={currentPage === totalPages || totalPages === 0}
-        onClick={() => onPageChange(currentPage + 1)}
-      >
-        <i className="fas fa-angle-right"></i>
-      </Button>
-      <Button
-        className={isCircular ? "btn-sm btn-circle" : "join-item btn-sm"}
-        variant={isCircular ? "ghost" : "outline"}
-        title="最後へ"
-        disabled={currentPage === totalPages || totalPages === 0}
-        onClick={() => onPageChange(totalPages)}
-      >
-        <i className="fas fa-angle-double-right"></i>
-      </Button>
-    </div>
-  );
+type PaginationLinkProps = {
+  isActive?: boolean
+} & Pick<React.ComponentProps<typeof Button>, 'size'> &
+  React.ComponentProps<'a'>
+
+function PaginationLink({
+  className,
+  isActive,
+  size = 'icon',
+  ...props
+}: PaginationLinkProps) {
+  return (
+    <a
+      aria-current={isActive ? 'page' : undefined}
+      data-slot="pagination-link"
+      data-active={isActive}
+      className={cn(
+        buttonVariants({
+          variant: isActive ? 'outline' : 'ghost',
+          size,
+        }),
+        className,
+      )}
+      {...props}
+    />
+  )
+}
+
+function PaginationPrevious({
+  className,
+  ...props
+}: React.ComponentProps<typeof PaginationLink>) {
+  return (
+    <PaginationLink
+      aria-label="Go to previous page"
+      size="default"
+      className={cn('gap-1 px-2.5 sm:pl-2.5', className)}
+      {...props}
+    >
+      <ChevronLeftIcon />
+      <span className="hidden sm:block">Previous</span>
+    </PaginationLink>
+  )
+}
+
+function PaginationNext({
+  className,
+  ...props
+}: React.ComponentProps<typeof PaginationLink>) {
+  return (
+    <PaginationLink
+      aria-label="Go to next page"
+      size="default"
+      className={cn('gap-1 px-2.5 sm:pr-2.5', className)}
+      {...props}
+    >
+      <span className="hidden sm:block">Next</span>
+      <ChevronRightIcon />
+    </PaginationLink>
+  )
+}
+
+function PaginationEllipsis({
+  className,
+  ...props
+}: React.ComponentProps<'span'>) {
+  return (
+    <span
+      aria-hidden
+      data-slot="pagination-ellipsis"
+      className={cn('flex size-9 items-center justify-center', className)}
+      {...props}
+    >
+      <MoreHorizontalIcon className="size-4" />
+      <span className="sr-only">More pages</span>
+    </span>
+  )
+}
+
+export {
+  Pagination,
+  PaginationContent,
+  PaginationLink,
+  PaginationItem,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
 }
