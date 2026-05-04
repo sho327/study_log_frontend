@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* [data-theme="light"] {
+  ※↓↓tailwind.config.tsにて設定↓↓※
+
+  Primary
+  --p: xxx xxx xxx;
+  --pc: xxx xxx xxx;
+  例: btn-primary
+
+  Secondary
+  --se: xxx xxx xxx;
+  --sec: xxx xxx xxx;
+  例: btn-secondary
+
+  Accent
+  --ac: xxx xxx xxx;
+  --acc: xxx xxx xxx;
+  例: btn-accent
+
+  Info
+  --in: xxx xxx xxx;
+  --inc: xxx xxx xxx;
+  例: btn-info
+
+  Success
+  --su: xxx xxx xxx;
+  --suc: xxx xxx xxx;
+  例: btn-success
+
+  Warning
+  --wa: xxx xxx xxx;
+  --wac: xxx xxx xxx;
+  例: btn-warning
+
+  Error
+  --er: xxx xxx xxx;
+  --erc: xxx xxx xxx;
+  例: btn-error
+
+  Neutral
+  --n: xxx xxx xxx;
+  --nc: xxx xxx xxx;
+  例: btn-neutral/badge-neutral ※フッターのデフォルト背景色にも使用される
+
+  Base-100(body背景色の設定)
+  --b1: xxx xxx xxx;
+
+  Base-200
+  --b2: xxx xxx xxx;
+
+  Base-300(カード背景色)
+  --b3: xxx xxx xxx;
+
+  Baseテキストカラー
+  --bc: xxx xxx xxx;
+} */
+
+body {
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  background-color: var(--b1);
+}
+
+/* Auth specific styles */
+.auth-card {
+  background-color: #ffffff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 1.5rem;
+}
+
+.input-minimal {
+  /* border: 1.5px solid #e5e7eb; */
+  border: 1.5px solid #e2e3e7;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.input-minimal:focus {
+  border-color: oklch(var(--p));
+  box-shadow: 0 0 0 1px oklch(var(--p));
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.dropdown-content {
+  transform-origin: top right;
+  animation: dropdown-pop 0.2s ease-out;
+}
+
+.table tr.active,
+.table tr.active:nth-child(2n),
+.table-zebra tbody tr:nth-child(2n) {
+  background-color: #f6f6f6;
+}
+
+@keyframes dropdown-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Selection Style --- */
+::selection {
+  /* background-color: #bae6fd; */
+  /* light blue (sky-200) */
+  background-color: #bfdbfe;
+  /* blue (blue-200) */
+  color: #0f172a;
+  /* slate-900 */
+}
+
+/* --- Autofill Styles Reset --- */
+/* ブラウザの自動入力(Autofill)による背景色・文字色の変化を防止 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #1f2937 !important;
+  /* text-neutral相当のグレー */
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+  caret-color: #1f2937 !important;
+  /* カーソルを強制的に表示 */
+}

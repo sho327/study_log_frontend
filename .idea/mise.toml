@@ -1,0 +1,4 @@
+[tools]
+# node = "22.11.0"
+# npm = "latest"
+uv = "latest"

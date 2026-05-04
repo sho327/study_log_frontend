@@ -1,0 +1,12 @@
+https://sho327.github.io/unimoa_frontend/login
+https://sho327.github.io/unimoa_frontend/signup
+https://sho327.github.io/unimoa_frontend/password_reset
+https://sho327.github.io/unimoa_frontend/password_reset_request
+https://sho327.github.io/unimoa_frontend/user_activate_request
+https://sho327.github.io/unimoa_frontend/user_activate_success
+https://sho327.github.io/unimoa_frontend/initial_setup
+https://sho327.github.io/unimoa_frontend/quick_setup
+https://sho327.github.io/unimoa_frontend/dashboard
+https://sho327.github.io/unimoa_frontend/projects
+https://sho327.github.io/unimoa_frontend/members
+https://sho327.github.io/unimoa_frontend/project/xxx/dashboard
