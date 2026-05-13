@@ -192,15 +192,15 @@ export function NewLogContent() {
           <form onSubmit={form.onSubmit(handleSubmit)}>
             <Stack gap="md">
               <DatePickerInput
-                label="Date"
-                placeholder="Select date"
+                label="日付"
+                placeholder="日付を選択"
                 required
                 maxDate={new Date()}
                 {...form.getInputProps('date')}
               />
 
               <NumberInput
-                label="Duration (minutes)"
+                label="勉強時間 (分)"
                 placeholder="60"
                 required
                 min={1}
@@ -210,13 +210,13 @@ export function NewLogContent() {
               />
 
               <Select
-                label="Category"
-                placeholder="Select category"
+                label="カテゴリ"
+                placeholder="カテゴリを選択"
                 required
                 data={defaultCategories}
                 searchable
                 creatable
-                getCreateLabel={(query) => `+ Create "${query}"`}
+                getCreateLabel={(query) => `+ ${query} を作成`}
                 onCreate={(query) => {
                   return query;
                 }}
@@ -225,8 +225,8 @@ export function NewLogContent() {
               />
 
               <Textarea
-                label="Memo"
-                placeholder="What did you learn today?"
+                label="メモ"
+                placeholder="学んだことを入力"
                 minRows={3}
                 maxRows={6}
                 autosize
@@ -235,7 +235,7 @@ export function NewLogContent() {
 
               <Box>
                 <Text size="sm" fw={500} mb="xs">
-                  Images (optional, max {MAX_IMAGES})
+                  画像（任意、最大{MAX_IMAGES}枚）
                 </Text>
 
                 {images.length > 0 && (
@@ -249,7 +249,7 @@ export function NewLogContent() {
                       >
                         <Image
                           src={img}
-                          alt={`Upload ${index + 1}`}
+                          alt={`アップロード ${index + 1}`}
                           h={100}
                           fit="cover"
                           radius="md"
@@ -264,7 +264,7 @@ export function NewLogContent() {
                             right: 4,
                           }}
                           onClick={() => removeImage(index)}
-                          aria-label="Remove image"
+                          aria-label="画像を削除"
                         >
                           <IconX size={12} />
                         </ActionIcon>
@@ -288,27 +288,27 @@ export function NewLogContent() {
                         loading={isUploading}
                         fullWidth
                       >
-                        {images.length === 0 ? 'Add Images' : 'Add More Images'}
+                        {images.length === 0 ? '画像を追加' : '画像を追加'}
                       </Button>
                     )}
                   </FileButton>
                 )}
 
                 <Text size="xs" c="dimmed" mt="xs">
-                  Supported: JPG, PNG, GIF. Max size: 5MB per image.
+                  対応ファイル形式: JPG, PNG, GIF。最大5MBまで
                 </Text>
               </Box>
 
               <TextInput
-                label="Output URL (optional)"
+                label="成果物のURL"
                 placeholder="https://github.com/..."
                 leftSection={<IconLink size={16} />}
                 {...form.getInputProps('outputUrl')}
               />
 
               <TagsInput
-                label="Tags"
-                placeholder="Press Enter to add tags"
+                label="タグ"
+                placeholder="タグを入力"
                 leftSection={<IconHash size={16} />}
                 data={existingTags}
                 {...form.getInputProps('tags')}
@@ -316,8 +316,8 @@ export function NewLogContent() {
 
               {themes.length > 0 && (
                 <Select
-                  label="Theme (optional)"
-                  placeholder="Link to a learning theme"
+                  label="テーマ (任意)"
+                  placeholder="学習テーマを選択"
                   data={themes.map((t) => ({ value: t.id, label: t.name }))}
                   clearable
                   leftSection={<IconFolder size={16} />}
@@ -327,9 +327,9 @@ export function NewLogContent() {
 
               <Group justify="flex-end" mt="md">
                 <Button variant="default" onClick={() => router.back()}>
-                  Cancel
+                  キャンセル
                 </Button>
-                <Button type="submit">Save Log</Button>
+                <Button type="submit">保存</Button>
               </Group>
             </Stack>
           </form>
