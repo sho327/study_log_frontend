@@ -26,6 +26,7 @@ import {
   IconFolder,
   IconBell,
   IconRocket,
+  IconBook,
 } from '@tabler/icons-react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/components/providers/mantineProvider';
@@ -93,9 +94,12 @@ export default function LandingPage() {
       >
         <Container size="lg">
           <Group justify="space-between">
-            <Text size="xl" fw={700}>
-              StudyLog
-            </Text>
+            <Group gap="xs" style={{ cursor: 'pointer' }} onClick={() => router.push('/')}>
+              <IconBook size={24} color="var(--mantine-color-blue-filled)" />
+              <Text size="xl" fw={700}>
+                Knolty
+              </Text>
+            </Group>
             <Group gap="sm">
               <ActionIcon
                 variant="subtle"
@@ -135,7 +139,7 @@ export default function LandingPage() {
               </Text>
             </Title>
             <Text size="xl" c="dimmed" maw={600}>
-              StudyLogは開発者と学習者のための、アウトプット重視の学習プラットフォームです。
+              Knoltyは開発者と学習者のための、アウトプット重視の学習プラットフォームです。
               学習時間を記録し、成果物を紐づけ、コミュニティとつながりましょう。
             </Text>
             <Group mt="md">
@@ -180,7 +184,7 @@ export default function LandingPage() {
           <Stack gap="md" align="center" ta="center" py={40}>
             <Title order={2}>学習の旅を始めませんか?</Title>
             <Text c="dimmed" maw={500}>
-              StudyLogで進捗を記録し、成果物を共有している
+              Knoltyで進捗を記録し、成果物を共有している
               多くの開発者や学習者に加わりましょう。
             </Text>
             <Button size="lg" onClick={() => router.push('/register')}>
@@ -194,7 +198,7 @@ export default function LandingPage() {
         <Container size="lg">
           <Group justify="space-between">
             <Text size="sm" c="dimmed">
-              2024 StudyLog. 学習者のために、学習者が作りました。
+              &copy; 2024 Knolty. 学習者のために、学習者が作りました。
             </Text>
             <Group gap="xs">
               <Button variant="subtle" size="sm" onClick={() => router.push('/api-docs')}>

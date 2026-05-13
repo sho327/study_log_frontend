@@ -94,7 +94,7 @@ export function NotificationsContent() {
 
   const handleNotificationClick = (notification: Notification) => {
     handleMarkAsRead(notification.id);
-    
+
     if (notification.type === 'follow') {
       router.push(`/profile/${notification.actorId}`);
     } else if (notification.targetId) {
@@ -113,9 +113,9 @@ export function NotificationsContent() {
       <Stack gap="lg">
         <Group justify="space-between" align="center">
           <Box>
-            <Title order={2}>Notifications</Title>
+            <Title order={2}>通知</Title>
             <Text c="dimmed" size="sm">
-              {unreadCount > 0 ? `${unreadCount} unread` : 'All caught up!'}
+              {unreadCount > 0 ? `${unreadCount} 件の未読通知` : 'すべて既読です'}
             </Text>
           </Box>
           {unreadCount > 0 && (
@@ -124,7 +124,7 @@ export function NotificationsContent() {
               leftSection={<IconCheck size={16} />}
               onClick={handleMarkAllAsRead}
             >
-              Mark all as read
+              全て既読にする
             </Button>
           )}
         </Group>
@@ -135,7 +135,7 @@ export function NotificationsContent() {
               <Stack align="center" gap="md">
                 <IconMoodEmpty size={48} stroke={1.5} color="var(--mantine-color-dimmed)" />
                 <Text c="dimmed" ta="center">
-                  No notifications yet
+                  通知はありません
                 </Text>
               </Stack>
             </Center>

@@ -1,5 +1,5 @@
 "use client";
 
-import { SettingsPage } from "@/components/page/main/settings";
+import { SettingsContent } from "@/components/page/main/settings";
 
-export default SettingsPage;
+export default SettingsContent;

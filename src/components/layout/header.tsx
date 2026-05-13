@@ -17,6 +17,7 @@ import {
   IconLogout,
   IconSun,
   IconMoon,
+  IconBook,
 } from '@tabler/icons-react';
 import { useAuth } from '@/components/providers/mantineProvider';
 import { useRouter } from 'next/navigation';
@@ -53,14 +54,12 @@ export function Header({ opened, toggle }: HeaderProps) {
   if (!user) {
     return (
       <Group h="100%" px="md" justify="space-between">
-        <Text
-          size="xl"
-          fw={700}
-          style={{ cursor: 'pointer' }}
-          onClick={() => router.push('/')}
-        >
-          StudyLog
-        </Text>
+        <Group gap="xs" style={{ cursor: 'pointer' }} onClick={() => router.push('/')}>
+          <IconBook size={24} color="var(--mantine-color-blue-filled)" />
+          <Text size="xl" fw={700}>
+            Knolty
+          </Text>
+        </Group>
         <ActionIcon
           variant="subtle"
           size="lg"
@@ -79,14 +78,12 @@ export function Header({ opened, toggle }: HeaderProps) {
         {toggle && (
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
         )}
-        <Text
-          size="xl"
-          fw={700}
-          style={{ cursor: 'pointer' }}
-          onClick={() => router.push('/timeline')}
-        >
-          StudyLog
-        </Text>
+        <Group gap="xs" style={{ cursor: 'pointer' }} onClick={() => router.push('/timeline')}>
+          <IconBook size={24} color="var(--mantine-color-blue-filled)" />
+          <Text size="xl" fw={700}>
+            Knolty
+          </Text>
+        </Group>
       </Group>
 
       <Group gap="xs">

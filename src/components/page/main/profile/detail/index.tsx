@@ -119,13 +119,13 @@ export function ProfileDetailContent() {
                     <Text component="span" fw={700}>
                       {profileUser.following.length}
                     </Text>{' '}
-                    Following
+                    フォロー
                   </Text>
                   <Text size="sm">
                     <Text component="span" fw={700}>
                       {profileUser.followers.length}
                     </Text>{' '}
-                    Followers
+                    フォロワー
                   </Text>
                 </Group>
               </Box>
@@ -152,10 +152,10 @@ export function ProfileDetailContent() {
                 </ThemeIcon>
                 <Box>
                   <Text size="xs" c="dimmed" tt="uppercase" fw={700}>
-                    Streak
+                    連続記録
                   </Text>
                   <Text size="lg" fw={700}>
-                    {stats.streak} days
+                    {stats.streak} 日
                   </Text>
                 </Box>
               </Group>
@@ -168,7 +168,7 @@ export function ProfileDetailContent() {
                 </ThemeIcon>
                 <Box>
                   <Text size="xs" c="dimmed" tt="uppercase" fw={700}>
-                    Total Time (30d)
+                    総学習時間
                   </Text>
                   <Text size="lg" fw={700}>
                     {formatDuration(stats.totalMinutes)}
@@ -184,7 +184,7 @@ export function ProfileDetailContent() {
                 </ThemeIcon>
                 <Box>
                   <Text size="xs" c="dimmed" tt="uppercase" fw={700}>
-                    Logs (30d)
+                    学習記録数
                   </Text>
                   <Text size="lg" fw={700}>
                     {stats.logCount}
@@ -197,7 +197,7 @@ export function ProfileDetailContent() {
 
         <Tabs defaultValue="logs">
           <Tabs.List>
-            <Tabs.Tab value="logs">Study Logs</Tabs.Tab>
+            <Tabs.Tab value="logs">学習記録</Tabs.Tab>
           </Tabs.List>
 
           <Tabs.Panel value="logs" pt="md">
@@ -215,7 +215,7 @@ export function ProfileDetailContent() {
             ) : (
               <Card shadow="sm" padding="xl" radius="lg" withBorder>
                 <Text c="dimmed" ta="center">
-                  No study logs yet
+                  まだ学習記録がありません
                 </Text>
               </Card>
             )}

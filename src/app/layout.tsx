@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'StudyLog - Output Learning Platform',
+  title: 'Knolty - Output Learning Platform',
   description: 'Track your learning journey, share outputs, and grow with a community of learners and developers.',
   generator: 'v0.app',
   icons: {

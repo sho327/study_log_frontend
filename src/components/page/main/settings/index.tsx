@@ -63,7 +63,7 @@ export function SettingsContent() {
     });
 
     refreshUser();
-    
+
     notifications.show({
       title: 'Success',
       message: 'Profile updated successfully',
@@ -89,9 +89,9 @@ export function SettingsContent() {
     <Container size="sm" py="md">
       <Stack gap="lg">
         <Box>
-          <Title order={2}>Settings</Title>
+          <Title order={2}>アプリ設定</Title>
           <Text c="dimmed" size="sm">
-            Manage your profile and preferences
+            プロフィールや設定を管理します
           </Text>
         </Box>
 
@@ -120,7 +120,7 @@ export function SettingsContent() {
                         size="xs"
                         leftSection={<IconUpload size={14} />}
                       >
-                        Upload Avatar
+                        画像を選択
                       </Button>
                     )}
                   </FileButton>
@@ -149,7 +149,7 @@ export function SettingsContent() {
               />
 
               <Group justify="flex-end" mt="md">
-                <Button type="submit">Save Changes</Button>
+                <Button type="submit">保存</Button>
               </Group>
             </Stack>
           </form>
@@ -157,22 +157,22 @@ export function SettingsContent() {
 
         <Card shadow="sm" padding="lg" radius="lg" withBorder>
           <Stack gap="md">
-            <Title order={4}>Account</Title>
+            <Title order={4}>アカウント</Title>
             <Text size="sm" c="dimmed">
-              Joined: {new Date(user.createdAt).toLocaleDateString('ja-JP')}
+              登録日: {new Date(user.createdAt).toLocaleDateString('ja-JP')}
             </Text>
             <Group gap="lg">
               <Text size="sm">
                 <Text component="span" fw={700}>
                   {user.following.length}
                 </Text>{' '}
-                Following
+                フォロー中
               </Text>
               <Text size="sm">
                 <Text component="span" fw={700}>
                   {user.followers.length}
                 </Text>{' '}
-                Followers
+                フォロワー
               </Text>
             </Group>
           </Stack>
