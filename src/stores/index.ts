@@ -106,8 +106,8 @@ const mockThemes: Theme[] = [
   {
     id: 'theme-1',
     userId: 'user-1',
-    name: 'React Mastery',
-    description: 'Becoming proficient in React ecosystem',
+    name: 'React',
+    description: 'Reactを習得する',
     color: '#61DAFB',
     createdAt: new Date().toISOString(),
   },
@@ -325,7 +325,7 @@ export const useAppStore = create<AppState>()(
               const likes = l.likes.includes(userId)
                 ? l.likes.filter((id) => id !== userId)
                 : [...l.likes, userId];
-              
+
               // Create notification if liked and not own log
               if (!l.likes.includes(userId) && l.userId !== userId) {
                 get().createNotification({
@@ -335,7 +335,7 @@ export const useAppStore = create<AppState>()(
                   targetId: logId,
                 });
               }
-              
+
               return { ...l, likes };
             }
             return l;
@@ -350,7 +350,7 @@ export const useAppStore = create<AppState>()(
           replyToUserId,
           createdAt: new Date().toISOString(),
         };
-        
+
         set((state) => ({
           logs: state.logs.map((l) => {
             if (l.id === logId) {
@@ -377,7 +377,7 @@ export const useAppStore = create<AppState>()(
             return l;
           }),
         }));
-        
+
         return comment;
       },
 

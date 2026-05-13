@@ -32,7 +32,7 @@ next-env.d.ts
 
 
 
-
+bk/
 # v0 sandbox internal files
 __v0_runtime_loader.js
 __v0_devtools.tsx

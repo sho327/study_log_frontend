@@ -1,5 +1,5 @@
 "use client";
 
-import { ThemesPage } from "@/components/page/main/themes";
+import { ThemesContent } from "@/components/page/main/themes";
 
-export default ThemesPage;
+export default ThemesContent;

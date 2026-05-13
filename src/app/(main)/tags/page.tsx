@@ -1,5 +1,5 @@
 "use client";
 
-import { TagsPage } from "@/components/page/main/tags";
+import { TagsContent } from "@/components/page/main/tags";
 
-export default TagsPage;
+export default TagsContent;

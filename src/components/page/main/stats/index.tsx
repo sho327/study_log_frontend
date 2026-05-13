@@ -82,9 +82,9 @@ export function StatsContent() {
       <Stack gap="lg">
         <Group justify="space-between" align="flex-end">
           <Box>
-            <Title order={2}>Statistics</Title>
+            <Title order={2}>学習統計</Title>
             <Text c="dimmed" size="sm">
-              Track your learning progress
+              学習の進捗を記録しよう
             </Text>
           </Box>
           <SegmentedControl
@@ -106,10 +106,10 @@ export function StatsContent() {
               </ThemeIcon>
               <Box>
                 <Text size="xs" c="dimmed" tt="uppercase" fw={700}>
-                  Streak
+                  連続記録
                 </Text>
                 <Text size="xl" fw={700}>
-                  {stats.streak} days
+                  {stats.streak} 日
                 </Text>
               </Box>
             </Group>
@@ -122,7 +122,7 @@ export function StatsContent() {
               </ThemeIcon>
               <Box>
                 <Text size="xs" c="dimmed" tt="uppercase" fw={700}>
-                  Total Time
+                  総学習時間
                 </Text>
                 <Text size="xl" fw={700}>
                   {formatDuration(stats.totalMinutes)}
@@ -138,7 +138,7 @@ export function StatsContent() {
               </ThemeIcon>
               <Box>
                 <Text size="xs" c="dimmed" tt="uppercase" fw={700}>
-                  Logs
+                  学習記録数
                 </Text>
                 <Text size="xl" fw={700}>
                   {stats.logCount}
@@ -154,7 +154,7 @@ export function StatsContent() {
               </ThemeIcon>
               <Box>
                 <Text size="xs" c="dimmed" tt="uppercase" fw={700}>
-                  Daily Avg
+                  1日平均
                 </Text>
                 <Text size="xl" fw={700}>
                   {stats.logCount > 0
@@ -168,7 +168,7 @@ export function StatsContent() {
 
         <Card shadow="sm" padding="lg" radius="lg" withBorder>
           <Stack gap="md">
-            <Title order={4}>Daily Activity</Title>
+            <Title order={4}>日々の学習</Title>
             {chartData.length > 0 ? (
               <BarChart
                 h={300}
@@ -180,7 +180,7 @@ export function StatsContent() {
               />
             ) : (
               <Center h={300}>
-                <Text c="dimmed">No data for this period</Text>
+                <Text c="dimmed">この期間のデータはありません</Text>
               </Center>
             )}
           </Stack>
@@ -189,7 +189,7 @@ export function StatsContent() {
         <SimpleGrid cols={{ base: 1, md: 2 }} spacing="md">
           <Card shadow="sm" padding="lg" radius="lg" withBorder>
             <Stack gap="md">
-              <Title order={4}>Time by Category</Title>
+              <Title order={4}>カテゴリー別学習時間</Title>
               {donutData.length > 0 ? (
                 <Center>
                   <DonutChart
@@ -203,7 +203,7 @@ export function StatsContent() {
                 </Center>
               ) : (
                 <Center h={200}>
-                  <Text c="dimmed">No data</Text>
+                  <Text c="dimmed">データはありません</Text>
                 </Center>
               )}
             </Stack>
@@ -211,7 +211,7 @@ export function StatsContent() {
 
           <Card shadow="sm" padding="lg" radius="lg" withBorder>
             <Stack gap="md">
-              <Title order={4}>Category Breakdown</Title>
+              <Title order={4}>カテゴリー別内訳</Title>
               <Stack gap="xs">
                 {stats.categoryStats.length > 0 ? (
                   stats.categoryStats.map((cat) => (
@@ -231,7 +231,7 @@ export function StatsContent() {
                   ))
                 ) : (
                   <Text c="dimmed" ta="center">
-                    No data
+                    データはありません
                   </Text>
                 )}
               </Stack>

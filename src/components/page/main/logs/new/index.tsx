@@ -179,12 +179,12 @@ export function NewLogContent() {
   }
 
   return (
-    <Container size="sm" py="md">
+    <Container size="md" py="md">
       <Stack gap="lg">
         <Box>
-          <Title order={2}>New Study Log</Title>
+          <Title order={2}>学習記録の作成</Title>
           <Text c="dimmed" size="sm">
-            Record your learning progress
+            学習した内容を記録しよう！
           </Text>
         </Box>
 
@@ -237,7 +237,7 @@ export function NewLogContent() {
                 <Text size="sm" fw={500} mb="xs">
                   Images (optional, max {MAX_IMAGES})
                 </Text>
-                
+
                 {images.length > 0 && (
                   <SimpleGrid cols={{ base: 2, sm: 4 }} spacing="xs" mb="sm">
                     {images.map((img, index) => (

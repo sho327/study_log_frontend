@@ -64,11 +64,11 @@ export function ThemesContent() {
 
   const loadData = useCallback(() => {
     if (!user) return;
-    
+
     const userThemes = store.getUserThemes(user.id);
     const userLogs = store.getUserLogs(user.id);
     setLogs(userLogs);
-    
+
     const themesWithStats = userThemes.map((theme) => {
       const themeLogs = userLogs.filter((log) => log.themeId === theme.id);
       return {
@@ -77,7 +77,7 @@ export function ThemesContent() {
         totalMinutes: themeLogs.reduce((sum, log) => sum + log.duration, 0),
       };
     });
-    
+
     setThemes(themesWithStats);
   }, [user, store]);
 
@@ -133,13 +133,13 @@ export function ThemesContent() {
       <Stack gap="lg">
         <Group justify="space-between" align="center">
           <Box>
-            <Title order={2}>Learning Themes</Title>
+            <Title order={2}>学習テーマ一覧</Title>
             <Text c="dimmed" size="sm">
-              Organize your learning goals
+              学習内容を整理しよう
             </Text>
           </Box>
           <Button leftSection={<IconPlus size={18} />} onClick={open}>
-            New Theme
+            新規作成
           </Button>
         </Group>
 
@@ -149,10 +149,12 @@ export function ThemesContent() {
               <Stack align="center" gap="md">
                 <IconMoodEmpty size={48} stroke={1.5} color="var(--mantine-color-dimmed)" />
                 <Text c="dimmed" ta="center">
-                  No themes yet. Create your first learning theme!
+                  学習テーマがまだありません。
+                  <br />
+                  まずは学習テーマを作成しましょう！
                 </Text>
                 <Button leftSection={<IconPlus size={18} />} onClick={open}>
-                  Create Theme
+                  テーマを作成する
                 </Button>
               </Stack>
             </Center>

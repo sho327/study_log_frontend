@@ -48,7 +48,7 @@ export function TimelineContent() {
   }
 
   return (
-    <Container size="sm" py="md">
+    <Container size="md" py="md">
       <Stack gap="lg">
         <Group justify="space-between" align="center">
           <Box>

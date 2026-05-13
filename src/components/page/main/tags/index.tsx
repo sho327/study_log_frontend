@@ -39,17 +39,17 @@ export function TagsContent() {
   const loadData = useCallback(() => {
     const tags = store.getAllTags();
     const logs = store.getLogs();
-    
+
     const tagCounts: TagCount[] = tags.map((tag) => ({
       tag,
       count: logs.filter((log) => log.tags.includes(tag)).length,
     })).sort((a, b) => b.count - a.count);
-    
+
     setAllTags(tagCounts);
-    
+
     if (searchQuery) {
       const results = store.searchLogsByTag(searchQuery);
-      setFilteredLogs(results.sort((a, b) => 
+      setFilteredLogs(results.sort((a, b) =>
         new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
       ));
     } else {
@@ -87,14 +87,14 @@ export function TagsContent() {
     <Container size="md" py="md">
       <Stack gap="lg">
         <Box>
-          <Title order={2}>Tags</Title>
+          <Title order={2}>タグ</Title>
           <Text c="dimmed" size="sm">
-            Browse logs by tags
+            タグで学習ログを検索できます
           </Text>
         </Box>
 
         <TextInput
-          placeholder="Search tags..."
+          placeholder="タグを検索"
           leftSection={<IconSearch size={16} />}
           value={searchQuery}
           onChange={(e) => handleSearch(e.currentTarget.value)}
@@ -104,7 +104,7 @@ export function TagsContent() {
         {!searchQuery && (
           <Card shadow="sm" padding="lg" radius="lg" withBorder>
             <Stack gap="md">
-              <Text fw={500}>Popular Tags</Text>
+              <Text fw={500}>人気タグ</Text>
               {allTags.length > 0 ? (
                 <Group gap="xs">
                   {allTags.map(({ tag, count }) => (
@@ -122,7 +122,7 @@ export function TagsContent() {
                 </Group>
               ) : (
                 <Text c="dimmed" size="sm">
-                  No tags yet. Add tags to your study logs!
+                  まだタグがありません。学習ログにタグを追加しましょう！
                 </Text>
               )}
             </Stack>
@@ -133,7 +133,7 @@ export function TagsContent() {
           <Stack gap="md">
             <Group gap="xs">
               <Text size="sm" c="dimmed">
-                Showing results for:
+                検索結果:
               </Text>
               <Badge variant="light" leftSection={<IconHash size={12} />}>
                 {searchQuery}
@@ -150,7 +150,7 @@ export function TagsContent() {
                   <Stack align="center" gap="md">
                     <IconMoodEmpty size={48} stroke={1.5} color="var(--mantine-color-dimmed)" />
                     <Text c="dimmed" ta="center">
-                      No logs found with tag &quot;{searchQuery}&quot;
+                      {searchQuery}タグのログは見つかりませんでした
                     </Text>
                   </Stack>
                 </Center>
