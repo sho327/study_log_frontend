@@ -409,7 +409,7 @@ export function StudyLogCard({ log, onUpdate, showDelete = false }: StudyLogCard
   const handleDelete = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!user || log.userId !== user.id) return;
-    
+
     if (confirm('この学習ログを削除しますか?')) {
       store.deleteLog(log.id);
       notifications.show({
@@ -433,7 +433,7 @@ export function StudyLogCard({ log, onUpdate, showDelete = false }: StudyLogCard
       <Card
         shadow="sm"
         padding="lg"
-        radius="lg"
+        radius="md"
         withBorder
         style={{ cursor: 'pointer' }}
         onClick={handleCardClick}
