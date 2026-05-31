@@ -31,8 +31,7 @@ import {
   IconPhoto,
   IconX,
 } from '@tabler/icons-react';
-import { useAuth } from '@/components/providers/mantineProvider';
-import { useAppStore } from '@/stores';
+import { useAppStore, useCurrentUser } from '@/stores';
 import { useRouter } from 'next/navigation';
 import { notifications } from '@mantine/notifications';
 import { useEffect, useState, useRef } from 'react';
@@ -53,7 +52,7 @@ const defaultCategories = [
 const MAX_IMAGES = 4;
 
 export function NewLogContent() {
-  const { user } = useAuth();
+  const user = useCurrentUser();
   const router = useRouter();
   const store = useAppStore();
   const [themes, setThemes] = useState<Theme[]>([]);

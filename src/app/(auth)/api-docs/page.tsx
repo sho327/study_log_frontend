@@ -1,11 +1,11 @@
 'use client';
 
-import { useAuth } from '@/components/providers/mantineProvider';
+import { useCurrentUser } from '@/stores';
 import { AuthApiDocsContent, ApiDocsContent } from '@/components/page/auth/api-docs';
 import { ClientMainLayout } from '@/components/layout/clientMainLayout';
 
 export default function AuthApiDocsPage() {
-  const { user } = useAuth();
+  const user = useCurrentUser();
 
   if (!user) {
     return <AuthApiDocsContent />;
@@ -17,3 +17,4 @@ export default function AuthApiDocsPage() {
     </ClientMainLayout>
   );
 }
+

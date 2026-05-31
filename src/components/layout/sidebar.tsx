@@ -18,7 +18,7 @@ import {
   IconFolder,
   IconApi,
 } from '@tabler/icons-react';
-import { useAuth } from '@/components/providers/mantineProvider';
+import { useCurrentUser } from '@/stores';
 import { useRouter, usePathname } from 'next/navigation';
 
 interface SidebarProps {
@@ -35,7 +35,7 @@ const navItems = [
 ];
 
 export function Sidebar({ onNavigate }: SidebarProps) {
-  const { user } = useAuth();
+  const user = useCurrentUser();
   const router = useRouter();
   const pathname = usePathname();
 

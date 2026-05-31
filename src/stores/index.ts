@@ -403,3 +403,11 @@ export const useAppStore = create<AppState>()(
     }
   )
 );
+
+export const useCurrentUser = () => {
+  return useAppStore((state) => {
+    if (!state.currentUserId) return null;
+    return state.users.find((u) => u.id === state.currentUserId) || null;
+  });
+};
+

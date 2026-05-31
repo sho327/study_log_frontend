@@ -13,9 +13,8 @@ import {
   Center,
 } from '@mantine/core';
 import { IconSearch, IconHash, IconMoodEmpty } from '@tabler/icons-react';
-import { useAuth } from '@/components/providers/mantineProvider';
 import { StudyLogCard } from '@/components/page/main/logs/StudyLogCard';
-import { useAppStore } from '@/stores';
+import { useAppStore, useCurrentUser } from '@/stores';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState, useCallback } from 'react';
 import type { StudyLog } from '@/types';
@@ -26,7 +25,7 @@ interface TagCount {
 }
 
 export function TagsContent() {
-  const { user } = useAuth();
+  const user = useCurrentUser();
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get('q') || '';

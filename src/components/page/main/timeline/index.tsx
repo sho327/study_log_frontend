@@ -13,15 +13,14 @@ import {
   Box,
 } from '@mantine/core';
 import { IconPlus, IconMoodEmpty } from '@tabler/icons-react';
-import { useAuth } from '@/components/providers/mantineProvider';
 import { StudyLogCard } from '@/components/page/main/logs/StudyLogCard';
-import { useAppStore } from '@/stores';
+import { useAppStore, useCurrentUser } from '@/stores';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect, useCallback } from 'react';
 import type { StudyLog } from '@/types';
 
 export function TimelineContent() {
-  const { user } = useAuth();
+  const user = useCurrentUser();
   const router = useRouter();
   const store = useAppStore();
   const [logs, setLogs] = useState<StudyLog[]>([]);

@@ -16,14 +16,13 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IconUpload } from '@tabler/icons-react';
-import { useAuth } from '@/components/providers/mantineProvider';
-import { useAppStore } from '@/stores';
+import { useAppStore, useCurrentUser } from '@/stores';
 import { useRouter } from 'next/navigation';
 import { notifications } from '@mantine/notifications';
 import { useEffect, useState } from 'react';
 
 export function SettingsContent() {
-  const { user, refreshUser } = useAuth();
+  const user = useCurrentUser();
   const router = useRouter();
   const store = useAppStore();
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
@@ -62,7 +61,6 @@ export function SettingsContent() {
       avatar: avatarPreview || '',
     });
 
-    refreshUser();
 
     notifications.show({
       title: 'Success',

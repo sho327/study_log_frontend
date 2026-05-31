@@ -38,8 +38,7 @@ import {
 } from '@tabler/icons-react';
 import { formatDistanceToNow } from 'date-fns';
 import { ja } from 'date-fns/locale';
-import { useAuth } from '@/components/providers/mantineProvider';
-import { useAppStore } from '@/stores';
+import { useAppStore, useCurrentUser } from '@/stores';
 import { useRouter, useParams } from 'next/navigation';
 import { notifications } from '@mantine/notifications';
 import { useEffect, useState, useCallback, useMemo, useRef } from 'react';
@@ -285,7 +284,7 @@ function CommentItem({ comment, onReply }: CommentItemProps) {
 }
 
 export function LogDetailContent() {
-  const { user } = useAuth();
+  const user = useCurrentUser();
   const router = useRouter();
   const params = useParams();
   const logId = params.id as string;
@@ -373,13 +372,13 @@ export function LogDetailContent() {
 
   const handleCommentChange = (value: string) => {
     setCommentText(value);
-    
+
     const cursorPos = textareaRef.current?.selectionStart || 0;
     setCursorPosition(cursorPos);
-    
+
     const textBeforeCursor = value.slice(0, cursorPos);
     const lastAtIndex = textBeforeCursor.lastIndexOf('@');
-    
+
     if (lastAtIndex !== -1) {
       const textAfterAt = textBeforeCursor.slice(lastAtIndex + 1);
       if (!textAfterAt.includes(' ') && !textAfterAt.includes('\n')) {
@@ -418,7 +417,7 @@ export function LogDetailContent() {
   }
 
   return (
-    <Container size="sm" py="md">
+    <Container size="md" py="md">
       <Stack gap="lg">
         <Group>
           <ActionIcon variant="subtle" onClick={() => router.back()}>

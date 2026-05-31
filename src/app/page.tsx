@@ -29,7 +29,7 @@ import {
   IconBook,
 } from '@tabler/icons-react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/components/providers/mantineProvider';
+import { useCurrentUser } from '@/stores';
 import { useEffect } from 'react';
 
 const features = [
@@ -66,7 +66,7 @@ const features = [
 ];
 
 export default function LandingPage() {
-  const { user } = useAuth();
+  const user = useCurrentUser();
   const router = useRouter();
   const { colorScheme, setColorScheme } = useMantineColorScheme();
 

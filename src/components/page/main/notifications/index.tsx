@@ -22,8 +22,7 @@ import {
 } from '@tabler/icons-react';
 import { formatDistanceToNow } from 'date-fns';
 import { ja } from 'date-fns/locale';
-import { useAuth } from '@/components/providers/mantineProvider';
-import { useAppStore } from '@/stores';
+import { useAppStore, useCurrentUser } from '@/stores';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState, useCallback } from 'react';
 import type { Notification } from '@/types';
@@ -62,7 +61,7 @@ function getNotificationText(type: Notification['type'], actorName: string): str
 }
 
 export function NotificationsContent() {
-  const { user } = useAuth();
+  const user = useCurrentUser();
   const router = useRouter();
   const store = useAppStore();
   const [notifications, setNotifications] = useState<Notification[]>([]);

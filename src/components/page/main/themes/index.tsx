@@ -22,8 +22,7 @@ import {
 import { useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
 import { IconPlus, IconTrash, IconFolder, IconMoodEmpty } from '@tabler/icons-react';
-import { useAuth } from '@/components/providers/mantineProvider';
-import { useAppStore } from '@/stores';
+import { useAppStore, useCurrentUser } from '@/stores';
 import { useRouter } from 'next/navigation';
 import { notifications } from '@mantine/notifications';
 import { useEffect, useState, useCallback } from 'react';
@@ -44,7 +43,7 @@ function formatDuration(minutes: number): string {
 }
 
 export function ThemesContent() {
-  const { user } = useAuth();
+  const user = useCurrentUser();
   const router = useRouter();
   const store = useAppStore();
   const [opened, { open, close }] = useDisclosure(false);

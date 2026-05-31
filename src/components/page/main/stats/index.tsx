@@ -21,8 +21,7 @@ import {
   IconCalendar,
   IconChartPie,
 } from '@tabler/icons-react';
-import { useAuth } from '@/components/providers/mantineProvider';
-import { useAppStore } from '@/stores';
+import { useAppStore, useCurrentUser } from '@/stores';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -44,7 +43,7 @@ function formatDuration(minutes: number): string {
 }
 
 export function StatsContent() {
-  const { user } = useAuth();
+  const user = useCurrentUser();
   const router = useRouter();
   const store = useAppStore();
   const [stats, setStats] = useState<StatsData | null>(null);

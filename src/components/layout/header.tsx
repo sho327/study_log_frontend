@@ -19,9 +19,8 @@ import {
   IconMoon,
   IconBook,
 } from '@tabler/icons-react';
-import { useAuth } from '@/components/providers/mantineProvider';
 import { useRouter } from 'next/navigation';
-import { useAppStore } from '@/stores';
+import { useAppStore, useCurrentUser } from '@/stores';
 import { useMemo } from 'react';
 
 interface HeaderProps {
@@ -30,7 +29,8 @@ interface HeaderProps {
 }
 
 export function Header({ opened, toggle }: HeaderProps) {
-  const { user, logout } = useAuth();
+  const user = useCurrentUser();
+  const logout = useAppStore((state) => state.logout);
   const router = useRouter();
   const { colorScheme, setColorScheme } = useMantineColorScheme();
   const store = useAppStore();

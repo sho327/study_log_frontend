@@ -31,8 +31,7 @@ import {
 } from '@tabler/icons-react';
 import { formatDistanceToNow } from 'date-fns';
 import { ja } from 'date-fns/locale';
-import { useAuth } from '@/components/providers/mantineProvider';
-import { useAppStore } from '@/stores';
+import { useAppStore, useCurrentUser } from '@/stores';
 import type { StudyLog } from '@/types';
 import { useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
@@ -378,7 +377,7 @@ function ImageLightbox({
 }
 
 export function StudyLogCard({ log, onUpdate, showDelete = false }: StudyLogCardProps) {
-  const { user } = useAuth();
+  const user = useCurrentUser();
   const router = useRouter();
   const store = useAppStore();
   const [lightboxOpened, { open: openLightbox, close: closeLightbox }] = useDisclosure(false);

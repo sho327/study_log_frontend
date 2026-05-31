@@ -15,9 +15,8 @@ import {
   ThemeIcon,
 } from '@mantine/core';
 import { IconFlame, IconClock, IconCalendar, IconUserPlus, IconUserMinus } from '@tabler/icons-react';
-import { useAuth } from '@/components/providers/mantineProvider';
 import { StudyLogCard } from '@/components/page/main/logs/StudyLogCard';
-import { useAppStore } from '@/stores';
+import { useAppStore, useCurrentUser } from '@/stores';
 import { useRouter, useParams } from 'next/navigation';
 import { useEffect, useState, useCallback } from 'react';
 import type { User, StudyLog } from '@/types';
@@ -32,7 +31,7 @@ function formatDuration(minutes: number): string {
 }
 
 export function ProfileDetailContent() {
-  const { user: currentUser, refreshUser } = useAuth();
+  const currentUser = useCurrentUser();
   const router = useRouter();
   const params = useParams();
   const userId = params.id as string;
@@ -84,7 +83,6 @@ export function ProfileDetailContent() {
     } else {
       store.followUser(currentUser.id, profileUser.id);
     }
-    refreshUser();
     loadData();
   };
 

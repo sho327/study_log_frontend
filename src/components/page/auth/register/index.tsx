@@ -13,14 +13,14 @@ import {
   Center,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useAuth } from '@/components/providers/mantineProvider';
-import { useAppStore } from '@/stores';
+import { useAppStore, useCurrentUser } from '@/stores';
 import { useRouter } from 'next/navigation';
 import { notifications } from '@mantine/notifications';
 import { useEffect } from 'react';
 
 export function RegisterPageContent() {
-  const { user, login } = useAuth();
+  const user = useCurrentUser();
+  const login = useAppStore((state) => state.login);
   const router = useRouter();
   const store = useAppStore();
 
